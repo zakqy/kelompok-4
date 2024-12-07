@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "610932888523",
+    "project_id": "lembah-hijau",
+    "storage_bucket": "lembah-hijau.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610932888523:android:2519be14aa198c1a52dc4e",
+        "android_client_info": {
+          "package_name": "com.lembah.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Kv-WtzwdE83UUPct2J7ilvpAE4sAk-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
