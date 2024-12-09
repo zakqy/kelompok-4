@@ -68,6 +68,15 @@ flutter:
     - assets/bg.png
     - assets/lembah_hijau.jpg
     - assets/satwa.jpg
+    - assets/lembah_hijau.jpg
+    - assets/satwa.jpg
+    - assets/waterboom.jpg
+    - assets/keluarga.jpg
+    - assets/park.jpg
+    - assets/playground.jpg
+    - assets/camping.jpg
+    - assets/event.jpg
+    
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
