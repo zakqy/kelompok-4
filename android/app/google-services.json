@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "156511607021",
+    "project_id": "lembah-hijau-cab3a",
+    "storage_bucket": "lembah-hijau-cab3a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156511607021:android:2e35b838e5ebea0a2d14e4",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKY4FSYrvXYAJRia7b2YQSZCUdmAGCTFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156511607021:android:25518a8b687cce6a2d14e4",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKY4FSYrvXYAJRia7b2YQSZCUdmAGCTFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
