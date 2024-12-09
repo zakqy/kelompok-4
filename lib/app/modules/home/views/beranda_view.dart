@@ -1,201 +1,157 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-class BerandaView extends StatelessWidget {
-  const BerandaView({super.key});
+import 'package:myapp/app/controllers/auth_controllers.dart';
 
-   @override
+import 'package:myapp/app/modules/home/views/beranda_view.dart';
+
+
+import '../controllers/home_controller.dart';
+
+class HomeView extends GetView<HomeController> {
+  final cAuth = Get.find<AuthController>();
+  @override
   Widget build(BuildContext context) {
-    // Data untuk slider
-    final List<Map<String, String>> sliderData = [
-      {
-        'image': 'assets/lembah_hijau.jpg',
-        'title': 'Eksplorasi Alam',
-        'description': 'Nikmati keindahan alam dan berbagai fasilitas menarik di Lembah Hijau.',
-      },
-      {
-        'image': 'assets/satwa.jpg',
-        'title': 'Mengenal Satwa',
-        'description': 'Pelajari lebih dekat berbagai jenis satwa yang dilestarikan di sini.',
-      },
-      {
-        'image': 'assets/waterboom.jpg',
-        'title': 'Wisata Air',
-        'description': 'Rasakan keseruan bermain air di waterboom kami.',
-      },
-      {
-        'image': 'assets/keluarga.jpg',
-        'title': 'Liburan Keluarga',
-        'description': 'Ciptakan kenangan tak terlupakan bersama keluarga Anda.',
-      },
-    ];
-
-    final List<Map<String, String>> bottomSliderData = [
-      {
-        'image': 'assets/park.jpg',
-        'title': 'Taman Hijau',
-        'description': 'Relaksasi di taman hijau yang sejuk dan asri.',
-      },
-      {
-        'image': 'assets/playground.jpg',
-        'title': 'Area Bermain',
-        'description': 'Nikmati waktu bermain bersama anak-anak di area bermain.',
-      },
-      {
-        'image': 'assets/camping.jpg',
-        'title': 'Camping Seru',
-        'description': 'Pengalaman berkemah di alam terbuka yang menyenangkan.',
-      },
-      {
-        'image': 'assets/event.jpg',
-        'title': 'Acara Spesial',
-        'description': 'Ikuti berbagai acara spesial yang diadakan di Lembah Hijau.',
-      },
-    ];
-
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header image
-            Image.asset(
-              'assets/lembah_hijau.jpg', // Ganti dengan path gambar Anda
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: 200,
-            ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Center(
-                child: Text(
-                  'Pusat Informasi Lembah Hijau',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            // Slider Section
-            SizedBox(
-              height: 250, // Tinggi slider
-              child: PageView.builder(
-                itemCount: sliderData.length, // Jumlah slide
-                controller: PageController(viewportFraction: 0.9),
-                itemBuilder: (context, index) {
-                  final data = sliderData[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Image.asset(
-                              data['image']!, // Ganti dengan path gambar Anda
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  data['title']!,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  data['description']!,
-                                  style: const TextStyle(fontSize: 12),
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-
-            // Bottom Slider Section
-            SizedBox(
-              height: 250, // Tinggi slider
-              child: PageView.builder(
-                itemCount: bottomSliderData.length, // Jumlah slide
-                controller: PageController(viewportFraction: 0.9),
-                itemBuilder: (context, index) {
-                  final data = bottomSliderData[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Image.asset(
-                              data['image']!, // Ganti dengan path gambar Anda
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  data['title']!,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  data['description']!,
-                                  style: const TextStyle(fontSize: 12),
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return DashboardAdmin();
   }
 }
 
-void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: BerandaView(),
-  ));
+class DashboardAdmin extends StatefulWidget {
+  const DashboardAdmin({super.key});
+
+  @override
+  State<DashboardAdmin> createState() => _DashboardAdminState();
+}
+
+class _DashboardAdminState extends State<DashboardAdmin> {
+  final cAuth = Get.find<AuthController>();
+  int _index = 0;
+  List<Map> _fragment = [
+    {
+      'title': 'Beranda',
+      'view': BerandaView(),
+    },
+    {
+      'title': 'pesan tiket',
+      'view': BerandaView(),
+    },
+    {
+      'title': 'pilih jadwal',
+      'view': BerandaView(),
+    },
+    {
+      'title': 'histori pembelian',
+      'view': BerandaView(),
+    },
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: drawer(),
+      appBar: AppBar(
+       backgroundColor: Color.fromARGB(255, 0, 91, 26),
+        titleSpacing: 0,
+        title: Text(_fragment[_index]['title']),
+        actions: [
+        ],
+      ),
+      body: _fragment[_index]['view'],
+    );
+  }
+
+  Widget drawer() {
+    return Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 0, 91, 26),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.account_circle,
+                    size: 80,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Dwi Cahyo Kuncoro",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 2,
+                  ),
+                  Text(
+                    'dwicahyokuncoro86@gmail.com',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              )),
+          ListTile(
+            onTap: () {
+              setState(() => _index = 0);
+              Get.back();
+            },
+            leading: Icon(Icons.home),
+            title: Text('Beranda'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Color.fromARGB(255, 0, 91, 26),
+            textColor: Color.fromARGB(255, 0, 91, 26),
+          ),
+          ListTile(
+            onTap: () {
+              setState(() => _index = 1);
+              Get.back();
+            },
+            leading: Icon(Icons.shop),
+            title: Text('pesan tiket'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Color.fromARGB(255, 0, 91, 26),
+            textColor: Color.fromARGB(255, 0, 91, 26),
+          ),
+          ListTile(
+            onTap: () {
+              setState(() => _index = 2);
+              Get.back();
+            },
+            leading: Icon(Icons.calendar_today),
+            title: Text('pilih jadwal'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Color.fromARGB(255, 0, 91, 26),
+            textColor: Color.fromARGB(255, 0, 91, 26),
+          ),
+          ListTile(
+            onTap: () {
+              setState(() => _index = 3);
+              Get.back();
+            },
+            leading: Icon(Icons.history_sharp),
+            title: Text('histori pembelian'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Color.fromARGB(255, 0, 91, 26),
+            textColor: Color.fromARGB(255, 0, 91, 26),
+          ),
+          ListTile(
+            onTap: () {
+              Get.back();
+              cAuth.logout();
+            },
+            leading: Icon(Icons.logout),
+            title: Text('Keluar'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Color.fromARGB(255, 0, 91, 26),
+            textColor: Color.fromARGB(255, 0, 91, 26),
+          ),
+        ],
+      ),
+    );
+  }
 }
