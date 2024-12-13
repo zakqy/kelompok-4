@@ -29,19 +29,19 @@ class _DashboardAdminState extends State<DashboardAdmin> {
   List<Map> _fragment = [
     {
       'title': 'Beranda',
-      'view': BerandaView(),
+      'view': HomeView(),
     },
     {
       'title': 'pesan tiket',
-      'view': BerandaView(),
+      'view': (),
     },
     {
       'title': 'pilih jadwal',
-      'view': BerandaView(),
+      'view': (),
     },
     {
       'title': 'histori pembelian',
-      'view': BerandaView(),
+      'view': (),
     },
   ];
   @override
