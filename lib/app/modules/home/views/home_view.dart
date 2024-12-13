@@ -29,19 +29,23 @@ class _DashboardAdminState extends State<DashboardAdmin> {
   List<Map> _fragment = [
     {
       'title': 'Beranda',
-      'view': HomeView(),
+      'view': BerandaView(),
+      
     },
     {
       'title': 'pesan tiket',
-      'view': (),
+      'view': BerandaView(),
+      
     },
     {
       'title': 'pilih jadwal',
-      'view': (),
+      'view': BerandaView(),
+      
     },
     {
       'title': 'histori pembelian',
-      'view': (),
+      'view': BerandaView(),
+      
     },
   ];
   @override
@@ -53,6 +57,12 @@ class _DashboardAdminState extends State<DashboardAdmin> {
         titleSpacing: 0,
         title: Text(_fragment[_index]['title']),
         actions: [
+          IconButton(
+            onPressed: () {
+              Get.to(_fragment[_index]['add']);
+            },
+            icon: Icon(Icons.add_circle_outline),
+          )
         ],
       ),
       body: _fragment[_index]['view'],
@@ -77,7 +87,7 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                     color: Colors.white,
                   ),
                   Text(
-                    "Dwi Cahyo Kuncoro",
+                    "ZAKQY",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -87,7 +97,7 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                     height: 2,
                   ),
                   Text(
-                    'dwicahyokuncoro86@gmail.com',
+                    'Admin',
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.white,
