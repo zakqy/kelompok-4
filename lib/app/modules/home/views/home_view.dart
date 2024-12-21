@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:myapp/app/controllers/auth_controllers.dart';
 
 import 'package:myapp/app/modules/home/views/beranda_view.dart';
+import 'package:myapp/app/modules/pemesanan/views/pemesanan_view.dart';
 
 
 import '../controllers/home_controller.dart';
@@ -33,8 +34,8 @@ class _DashboardAdminState extends State<DashboardAdmin> {
       
     },
     {
-      'title': 'pesan tiket',
-      'view': BerandaView(),
+      'title': 'Pesan Tiket',
+      'view': PemesananView(),
       
     },
     {
@@ -53,7 +54,8 @@ class _DashboardAdminState extends State<DashboardAdmin> {
     return Scaffold(
       drawer: drawer(),
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Color(0xFF005B1A),
+        foregroundColor: Colors.white,
         titleSpacing: 0,
         title: Text(_fragment[_index]['title']),
         actions: [
