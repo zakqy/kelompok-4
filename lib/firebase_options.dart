@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyATdL9C1CMDCvN9sq3YCc7jJA1VOfMdVXw',
-    appId: '1:156511607021:web:09fc8a6362eef4b92d14e4',
-    messagingSenderId: '156511607021',
-    projectId: 'lembah-hijau-cab3a',
-    authDomain: 'lembah-hijau-cab3a.firebaseapp.com',
-    storageBucket: 'lembah-hijau-cab3a.firebasestorage.app',
+    apiKey: 'AIzaSyBUPRMTCHT1hj89k2WqsMzP2NXRyuJE2wQ',
+    appId: '1:714839623625:web:417e7fe072b9f127054a18',
+    messagingSenderId: '714839623625',
+    projectId: 'lembah-hijau-87937',
+    authDomain: 'lembah-hijau-87937.firebaseapp.com',
+    storageBucket: 'lembah-hijau-87937.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCKY4FSYrvXYAJRia7b2YQSZCUdmAGCTFQ',
-    appId: '1:156511607021:android:2e35b838e5ebea0a2d14e4',
-    messagingSenderId: '156511607021',
-    projectId: 'lembah-hijau-cab3a',
-    storageBucket: 'lembah-hijau-cab3a.firebasestorage.app',
+    apiKey: 'AIzaSyD5F_lveQSSOOBxREDy9p-RBdiEpVnEgtU',
+    appId: '1:714839623625:android:3e267fd96186eaf3054a18',
+    messagingSenderId: '714839623625',
+    projectId: 'lembah-hijau-87937',
+    storageBucket: 'lembah-hijau-87937.firebasestorage.app',
   );
 
 }

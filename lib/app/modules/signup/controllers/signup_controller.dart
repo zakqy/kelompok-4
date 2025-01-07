@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:myapp/app/controllers/auth_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

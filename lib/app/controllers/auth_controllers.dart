@@ -5,6 +5,9 @@ import 'package:myapp/app/routes/app_pages.dart';
 class AuthController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  // Observasi untuk email pengguna yang sedang login
+  RxString userEmail = ''.obs;
+
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
 
   void signup(String emailAddress, String password) async {
@@ -14,6 +17,7 @@ class AuthController extends GetxController {
         password: password,
       );
       await myUser.user!.sendEmailVerification();
+      userEmail.value = emailAddress; // Simpan email setelah register
       Get.defaultDialog(
           title: "Verifikasi email",
           middleText:
@@ -41,6 +45,7 @@ class AuthController extends GetxController {
         password: pass,
       );
       if (credential.user!.emailVerified) {
+        userEmail.value = email; // Simpan email setelah login
         Get.offAllNamed(Routes.HOME);
       } else {
         Get.defaultDialog(
@@ -67,6 +72,7 @@ class AuthController extends GetxController {
 
   void logout() {
     auth.signOut();
+    userEmail.value = ''; // Reset email saat logout
     Get.offAllNamed(Routes.LOGIN);
   }
 
@@ -91,6 +97,17 @@ class AuthController extends GetxController {
     } else {
       Get.defaultDialog(
           title: "Terjadi kesalahan", middleText: "Email tidak valid");
+    }
+  }
+
+  void LoginGoogle() async {
+    try {
+      // Implement Google login logic here
+    } catch (error) {
+      Get.defaultDialog(
+        title: "Terjadi kesalahan",
+        middleText: "${error.toString()}",
+      );
     }
   }
 }

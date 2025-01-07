@@ -1,53 +1,63 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PemesananController extends GetxController {
-  //TODO: Implement PemesananController
+  // Text controllers
+  final cNama = TextEditingController();
+  final cJumlah = TextEditingController();
+  final cPembayaran = TextEditingController();
+   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  late TextEditingController cPassword;
-  late TextEditingController cEmail;
-  late TextEditingController cTelp;
-  late TextEditingController cJumlah;
+  // Observable variables with proper initialization
+  final jumlahTiket = 0.obs;
+  final subtotalProduk = 0.obs;
+  final biayaLayanan = 2000.obs;
+  final totalDiskon = 0.obs;
+  final totalPembayaran = 0.obs;
 
-  Future<DocumentSnapshot<Object?>> GetDataById(String id) async {
-    DocumentReference docRef = firestore.collection("pemesanan").doc(id);
+  // Base price as observable
+  final basePrice = 45000.obs;
 
-    return docRef.get();
-  }
-
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  Future<QuerySnapshot<Object?>> GetData() async {
-    CollectionReference pemesanan = firestore.collection('pemesanan');
-
-    return pemesanan.get();
-  }
-
-  Stream<QuerySnapshot<Object?>> StreamData() {
-    CollectionReference pemesanan = firestore.collection('pemesanan');
-
-    return pemesanan.snapshots();
-  }
-
-  void add(String password, String email, String telp, String jumlah) async {
-    CollectionReference pemesanan = firestore.collection("pemesanan");
-
+  // Update jumlah tiket
+  void updateJumlahTiket(String value) {
     try {
-      await pemesanan.add({
-        "password": password,
-        "email": email,
-        "telp": telp,
-        "jumlah": jumlah,
+      jumlahTiket.value = int.parse(value);
+      updateTotalHarga();
+    } catch (e) {
+      jumlahTiket.value = 0;
+      updateTotalHarga();
+    }
+  }
+
+  void updateTotalHarga() {
+    // Calculate subtotal
+    subtotalProduk.value = basePrice.value * jumlahTiket.value;
+    
+    // Calculate discount (5000 per ticket)
+    totalDiskon.value = 5000 * jumlahTiket.value;
+    
+    // Calculate total payment
+    totalPembayaran.value = subtotalProduk.value + biayaLayanan.value - totalDiskon.value;
+  }
+
+  void add(String nama, String jumlah, String harga, String pembayaran) async {
+    CollectionReference pesantiket = firestore.collection("pesantiket");
+    
+    try {
+      await pesantiket.add({
+        "nama": nama,
+        "jumlah" : jumlah,
+        "harga" : harga,
+        "pembayaran" : pembayaran,
+        
       });
       Get.defaultDialog(
           title: "Berhasil",
-          middleText: "Berhasil menyimpan data pemesanan",
+          middleText: "Berhasil menyimpan data matakuliah",
           onConfirm: () {
-            cPassword.clear();
-            cEmail.clear();
-            cTelp.clear();
-            cJumlah.clear();
+            
+            cNama.clear();
             Get.back();
             Get.back();
             textConfirm:
@@ -57,55 +67,22 @@ class PemesananController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan pemesanan.",
-      );
-    }
-  }
-
-  void delete(String id) {
-    DocumentReference docRef = firestore.collection("pemesanan").doc(id);
-
-    try {
-      Get.defaultDialog(
-        title: "Info",
-        middleText: "Apakah anda yakin menghapus data ini ?",
-        onConfirm: () {
-          docRef.delete();
-          Get.back();
-          Get.defaultDialog(
-            title: "Sukses",
-            middleText: "Berhasil menghapus data",
-          );
-        },
-        textConfirm: "Ya",
-        textCancel: "Batal",
-      );
-    } catch (e) {
-      print(e);
-      Get.defaultDialog(
-        title: "Terjadi kesalahan",
-        middleText: "Tidak berhasil menghapus data",
+        middleText: "Gagal Menambahkan matakuliah.",
       );
     }
   }
 
   @override
   void onInit() {
-    // TODO: implement onInit
-    cPassword = TextEditingController();
-    cEmail = TextEditingController();
-    cTelp = TextEditingController();
-    cJumlah = TextEditingController();
     super.onInit();
+    updateTotalHarga();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
-    cPassword = TextEditingController();
-    cEmail = TextEditingController();
-    cTelp = TextEditingController();
-    cJumlah = TextEditingController();
+    cNama.dispose();
+    cJumlah.dispose();
+    cPembayaran.dispose();
     super.onClose();
   }
 }

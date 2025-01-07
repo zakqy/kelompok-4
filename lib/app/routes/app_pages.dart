@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/historypembelian/bindings/historypembelian_binding.dart';
+import '../modules/historypembelian/views/historypembelian_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -51,6 +53,11 @@ class AppPages {
       name: _Paths.PEMESANAN,
       page: () => PemesananView(),
       binding: PemesananBinding(),
+    ),
+    GetPage(
+      name: _Paths.HISTORYPEMBELIAN,
+      page: () => const HistorypembelianView(),
+      binding: HistorypembelianBinding(),
     ),
   ];
 }
