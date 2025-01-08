@@ -7,7 +7,7 @@ class PemesananController extends GetxController {
   final cNama = TextEditingController();
   final cJumlah = TextEditingController();
   final cPembayaran = TextEditingController();
-   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   // Observable variables with proper initialization
   final jumlahTiket = 0.obs;
@@ -33,30 +33,29 @@ class PemesananController extends GetxController {
   void updateTotalHarga() {
     // Calculate subtotal
     subtotalProduk.value = basePrice.value * jumlahTiket.value;
-    
+
     // Calculate discount (5000 per ticket)
     totalDiskon.value = 5000 * jumlahTiket.value;
-    
+
     // Calculate total payment
-    totalPembayaran.value = subtotalProduk.value + biayaLayanan.value - totalDiskon.value;
+    totalPembayaran.value =
+        subtotalProduk.value + biayaLayanan.value - totalDiskon.value;
   }
 
   void add(String nama, String jumlah, String harga, String pembayaran) async {
     CollectionReference pesantiket = firestore.collection("pesantiket");
-    
+
     try {
       await pesantiket.add({
         "nama": nama,
-        "jumlah" : jumlah,
-        "harga" : harga,
-        "pembayaran" : pembayaran,
-        
+        "jumlah": jumlah,
+        "harga": harga,
+        "pembayaran": pembayaran,
       });
       Get.defaultDialog(
           title: "Berhasil",
-          middleText: "Berhasil menyimpan data matakuliah",
+          middleText: "pemesanan telah berhasil",
           onConfirm: () {
-            
             cNama.clear();
             Get.back();
             Get.back();
@@ -67,7 +66,7 @@ class PemesananController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan matakuliah.",
+        middleText: "Gagal memesan tiket",
       );
     }
   }

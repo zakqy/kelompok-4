@@ -69,13 +69,13 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                   color: Colors.white,
                 ),
                 Text(
-                  "ZAKQY",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                  "Dwi Cahyo Kuncoro",
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 Obx(() => Text(
                       cAuth.userEmail.value,
                       style: GoogleFonts.roboto(
-                          fontSize: 10, fontWeight: FontWeight.bold, color: Colors.white),
+                          fontSize: 7, fontWeight: FontWeight.bold, color: Colors.white),
                     )),
                 SizedBox(height: 2),
                 Text(
@@ -110,17 +110,17 @@ class _DashboardAdminState extends State<DashboardAdmin> {
             textColor: Color(0xFF005B1A),
           ),
           // Cari Jadwal button
-          ListTile(
-            onTap: () {
-              setState(() => _index = 2);
-              Get.back();
-            },
-            leading: Icon(Icons.calendar_today),
-            title: Text('Cari Jadwal'),
-            trailing: Icon(Icons.navigate_next),
-            iconColor: Color(0xFF005B1A),
-            textColor: Color(0xFF005B1A),
-          ),
+          // ListTile(
+          //   onTap: () {
+          //     setState(() => _index = 2);
+          //     Get.back();
+          //   },
+          //   leading: Icon(Icons.calendar_today),
+          //   title: Text('Cari Jadwal'),
+          //   trailing: Icon(Icons.navigate_next),
+          //   iconColor: Color(0xFF005B1A),
+          //   textColor: Color(0xFF005B1A),
+          // ),
           // History Pembelian button
           ListTile(
             onTap: () {
